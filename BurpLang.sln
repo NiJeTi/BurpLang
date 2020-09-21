@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Converter", "BurpLang.Converter\BurpLang.Converter.csproj", "{5C930799-DC52-40BA-A87D-7EA163011548}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C930799-DC52-40BA-A87D-7EA163011548}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C930799-DC52-40BA-A87D-7EA163011548}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C930799-DC52-40BA-A87D-7EA163011548}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C930799-DC52-40BA-A87D-7EA163011548}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
