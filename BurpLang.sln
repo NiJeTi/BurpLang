@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Converter", "BurpLang.Converter\BurpLang.Converter.csproj", "{5C930799-DC52-40BA-A87D-7EA163011548}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Core", "BurpLang.Core\BurpLang.Core.csproj", "{5C930799-DC52-40BA-A87D-7EA163011548}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Core.Tests", "BurpLang.Core.Tests\BurpLang.Core.Tests.csproj", "{663BC486-EB19-4EF3-A6B2-2C9D4941293A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +14,9 @@ Global
 		{5C930799-DC52-40BA-A87D-7EA163011548}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5C930799-DC52-40BA-A87D-7EA163011548}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5C930799-DC52-40BA-A87D-7EA163011548}.Release|Any CPU.Build.0 = Release|Any CPU
+		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
