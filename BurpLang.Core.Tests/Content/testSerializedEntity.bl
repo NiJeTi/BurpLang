@@ -1,32 +1,20 @@
 ﻿<
     String = "String"
-    EnumerablePrimitives = [
-        1
-        2
-        3
-        4
-        5
-        6
+    Integer = 123
+    FloatingPointNumber = 123.456
+    EnumerableStrings = [
+        "String1",
+        "String2",
+        "String3",
     ]
-    NestedEntity1 = <
-        IntValue = 123456
-        FloatValue = 123.456
-    >
-    EnumerableObjects = [
-        <
-            StringValue = "Value1"
-            NumericValue = 10
-        >
-        <
-            StringValue = "Value2"
-            NumericValue = 20
-        >
-        <
-            StringValue = "Value3"
-            NumericValue = 30
-        >
+    EnumerableNumbers = [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
     ]
-    Empty = _
-    True = TRUE
-    False = FALSE
+    TrueBoolean = TRUE
+    FalseBoolean = FALSE
 >
