@@ -8,20 +8,20 @@ namespace BurpLang.Core.Tests
 {
     public class SerializationTest
     {
-        private BaseEntity? _baseEntity;
+        private readonly Entity _entity = new Entity();
+
         private string? _serializedEntity;
 
         [SetUp]
         public void SetUp()
         {
-            _baseEntity = new BaseEntity();
             _serializedEntity = File.ReadAllText(Path.Combine("Content", "testSerializedEntity.bl"));
         }
-        
+
         [Test]
         public void Serialize()
         {
-            string serialized = Converter.Serialize(_baseEntity);
+            string serialized = Converter.Serialize(_entity!);
 
             Assert.That(serialized, Is.EqualTo(_serializedEntity));
         }
