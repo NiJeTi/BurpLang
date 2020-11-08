@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace BurpLang.Core.Tests.Entities
+namespace BurpLang.Tests.Entities
 {
     public class Entity : IEquatable<Entity>
     {

@@ -15,14 +15,14 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\BurpLang.Core\BurpLang.Core.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <None Remove="Content\testSerializedEntity.bl" />
       <Content Include="Content\testSerializedEntity.bl">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BurpLang\BurpLang.csproj" />
     </ItemGroup>
 
 </Project>

@@ -1,10 +1,10 @@
 using System.IO;
 
-using BurpLang.Core.Tests.Entities;
+using BurpLang.Tests.Entities;
 
 using NUnit.Framework;
 
-namespace BurpLang.Core.Tests
+namespace BurpLang.Tests
 {
     public class DeserializationTest
     {

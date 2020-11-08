@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Text;
 
-namespace BurpLang.Core
+namespace BurpLang
 {
     internal static class Serializer
     {

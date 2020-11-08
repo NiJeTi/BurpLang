@@ -1,4 +1,4 @@
-﻿namespace BurpLang.Core
+﻿namespace BurpLang
 {
     public static class Converter
     {
