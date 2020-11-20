@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+
+// ReSharper disable NonReadonlyMemberInGetHashCode
 
 namespace BurpLang.Tests.Entities
 {
@@ -36,7 +39,8 @@ namespace BurpLang.Tests.Entities
         }
 
         public override int GetHashCode() =>
-            HashCode.Combine(String, Integer, FloatingPointNumber, EnumerableStrings, EnumerableNumbers,
+            HashCode.Combine(String, Integer, FloatingPointNumber,
+                EnumerableStrings, EnumerableNumbers,
                 TrueBoolean, FalseBoolean);
 
         public bool Equals(Entity? other)
@@ -45,10 +49,19 @@ namespace BurpLang.Tests.Entities
                 return false;
 
             return String == other.String
-                && EnumerableNumbers.Equals(other.EnumerableNumbers)
-                && EnumerableStrings.Equals(other.EnumerableStrings)
+                && EnumerableNumbers.SequenceEqual(other.EnumerableNumbers)
+                && EnumerableStrings.SequenceEqual(other.EnumerableStrings)
                 && TrueBoolean == other.TrueBoolean
                 && FalseBoolean == other.FalseBoolean;
         }
+
+        public override string ToString() =>
+            $"{nameof(String)}: {String}, " +
+            $"{nameof(Integer)}: {Integer}, " +
+            $"{nameof(FloatingPointNumber)}: {FloatingPointNumber}, " +
+            $"{nameof(EnumerableStrings)}: {EnumerableStrings}, " +
+            $"{nameof(EnumerableNumbers)}: {EnumerableNumbers}, " +
+            $"{nameof(TrueBoolean)}: {TrueBoolean}, " +
+            $"{nameof(FalseBoolean)}: {FalseBoolean}";
     }
 }
