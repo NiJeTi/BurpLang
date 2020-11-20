@@ -10,7 +10,7 @@ namespace BurpLang.Tests
     {
         private readonly Entity _entity = new Entity();
 
-        private string? _serializedEntity;
+        private string _serializedEntity = null!;
 
         [SetUp]
         public void SetUp()
