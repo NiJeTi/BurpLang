@@ -7,7 +7,7 @@
         public static string Serialize(object target) => Serializer.Serialize(target, 1) ?? string.Empty;
 
         public static T Deserialize<T>(string input)
-            where T : notnull, new() =>
+            where T : class, new() =>
             Deserializer.Deserialize<T>(input);
     }
 }
