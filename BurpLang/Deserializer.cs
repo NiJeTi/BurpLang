@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 
 using BurpLang.Exceptions;
@@ -11,10 +12,8 @@ namespace BurpLang
     internal static class Deserializer
     {
         private const string ObjectPattern = @"\<.*\>";
-        private const string StringPattern = "\"[^\"]*\"";
         private const string IntPattern = @"\d+";
-        private const string FloatPattern = IntPattern + "." + IntPattern;
-        private const string BoolPattern = "(TRUE)|(FALSE)";
+        private const string FloatPattern = IntPattern + @"\." + IntPattern;
         private const string EnumerablePattern = @"\[[^\]]*\]";
 
         private const RegexOptions SearchOptions = RegexOptions.Singleline;
@@ -35,23 +34,31 @@ namespace BurpLang
                 var name = property.Name;
                 var type = property.PropertyType;
 
-                var valuePattern = GetRegex(property.PropertyType);
-                var searchPattern = $@"{name}\=(?<{name}>{valuePattern});";
+                var propertyIndex = input.IndexOf(name, StringComparison.Ordinal);
 
-                var propertyStart = input.IndexOf(name, StringComparison.Ordinal);
-                var i = propertyStart;
+                if (propertyIndex == -1)
+                    continue;
 
-                var propertyRelatedText = string.Empty;
-                
-                while (!propertyRelatedText.EndsWith(';'))
+                var propertyRelatedTextBuilder = new StringBuilder(name);
+                var i = propertyIndex + propertyRelatedTextBuilder.Length;
+                var lastChar = propertyRelatedTextBuilder[^1];
+
+                while (lastChar != ';')
                 {
-                    propertyRelatedText += input[i];
-                    i++;
+                    lastChar = input[i++];
+                    propertyRelatedTextBuilder.Append(lastChar);
                 }
+
+                var propertyRelatedText = propertyRelatedTextBuilder.ToString();
+
+                var searchPattern = $@"{name}\=(?<{name}>.*)\;";
 
                 var parsedValue = Regex
                    .Match(propertyRelatedText, searchPattern, RegexOptions.Singleline)
                    .Groups[name].Value;
+
+                if (string.IsNullOrEmpty(parsedValue))
+                    throw new PropertyParsingException(name, searchPattern, propertyRelatedText);
 
                 object? deserializedValue;
 
@@ -75,17 +82,35 @@ namespace BurpLang
             switch (type)
             {
                 case var t when t == typeof(string):
+                {
+                    if (value.First() != '\"' || value.Last() != '\"')
+                        throw new FormatException($"Cannot parse `{value}`. String should be in quotes.");
+
+                    if (value[1..^1].Contains('\"'))
+                        throw new FormatException($"Cannot parse `{value}`. String should not contain quotes.");
+
                     return value.Trim('\"');
+                }
                 case var t when t == typeof(int):
-                    return int.Parse(value);
+                {
+                    if (!int.TryParse(value, out var parsed))
+                        throw new FormatException($"Cannot parse `{value}`. It's not an integer.");
+
+                    return parsed;
+                }
                 case var t when t == typeof(float):
-                    return float.Parse(value);
+                {
+                    if (!Regex.IsMatch(value, FloatPattern) || !float.TryParse(value, out var parsed))
+                        throw new FormatException($"Cannot parse `{value}`. It's not a float.");
+
+                    return parsed;
+                }
                 case var t when t == typeof(bool):
                     return value switch
                     {
                         "TRUE" => true,
                         "FALSE" => false,
-                        _ => throw new FormatException()
+                        _ => throw new FormatException($"Cannot deserialize `{value}`. Expected `TRUE` or `FALSE`.")
                     };
                 case var t when typeof(IEnumerable).IsAssignableFrom(t):
                 {
@@ -94,9 +119,7 @@ namespace BurpLang
 
                     var resultEnumerable = (Activator.CreateInstance(type) as IList)!;
 
-                    var itemRegex = GetRegex(type);
-                    var valueMatch = itemRegex.Match(value);
-
+                    var valueMatch = Regex.Match(value, EnumerablePattern);
                     var enumerableItems = valueMatch.Value[1..^2].Trim('[', ']').Split(',');
 
                     foreach (var item in enumerableItems)
@@ -112,21 +135,6 @@ namespace BurpLang
                 default:
                     throw new UnsupportedTypeException(type);
             }
-        }
-
-        private static Regex GetRegex(Type type)
-        {
-            var pattern = type switch
-            {
-                var t when t == typeof(string) => StringPattern,
-                var t when t == typeof(int) => IntPattern,
-                var t when t == typeof(float) => FloatPattern,
-                var t when t == typeof(bool) => BoolPattern,
-                var t when typeof(IEnumerable).IsAssignableFrom(t) => EnumerablePattern,
-                _ => throw new UnsupportedTypeException(type)
-            };
-
-            return new Regex(pattern, SearchOptions);
         }
 
         private static bool IsDeserializableType(Type type) =>
