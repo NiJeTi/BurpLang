@@ -4,7 +4,7 @@ using System.Linq;
 
 // ReSharper disable NonReadonlyMemberInGetHashCode
 
-namespace BurpLang.Tests.Entities
+namespace BurpLang.Common.Entities
 {
     public class Entity : IEquatable<Entity>
     {

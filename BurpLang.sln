@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang", "BurpLang\BurpLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Tests", "BurpLang.Tests\BurpLang.Tests.csproj", "{663BC486-EB19-4EF3-A6B2-2C9D4941293A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Api", "BurpLang.Api\BurpLang.Api.csproj", "{37256F0A-B2C8-4001-AE1D-26C5346F0B25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BurpLang.Common", "BurpLang.Common\BurpLang.Common.csproj", "{A347E96E-DF7C-4B5A-AC0E-E81E40120273}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{663BC486-EB19-4EF3-A6B2-2C9D4941293A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37256F0A-B2C8-4001-AE1D-26C5346F0B25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37256F0A-B2C8-4001-AE1D-26C5346F0B25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37256F0A-B2C8-4001-AE1D-26C5346F0B25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37256F0A-B2C8-4001-AE1D-26C5346F0B25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A347E96E-DF7C-4B5A-AC0E-E81E40120273}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A347E96E-DF7C-4B5A-AC0E-E81E40120273}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A347E96E-DF7C-4B5A-AC0E-E81E40120273}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A347E96E-DF7C-4B5A-AC0E-E81E40120273}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

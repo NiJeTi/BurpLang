@@ -1,6 +1,6 @@
 using System.IO;
 
-using BurpLang.Tests.Entities;
+using BurpLang.Common.Entities;
 
 using NUnit.Framework;
 

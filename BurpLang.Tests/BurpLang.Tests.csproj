@@ -24,6 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\BurpLang.Common\BurpLang.Common.csproj" />
       <ProjectReference Include="..\BurpLang\BurpLang.csproj" />
     </ItemGroup>
 
