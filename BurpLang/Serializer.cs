@@ -63,7 +63,7 @@ namespace BurpLang
                         var serialized = Serialize(value!, nestingLevel + 1);
 
                         if (serialized != null)
-                            serializer.Append(margin).Append(name).Append(" = ").Append(serialized).AppendLine();
+                            serializer.Append(margin).Append(name).Append(" = ").Append(serialized).AppendLine(";");
                     }
 
                     serializer.Append(CreateMargin(nestingLevel - 1)).Append('>');
