@@ -18,9 +18,6 @@
 
     <ItemGroup>
       <None Remove="Content\testSerializedEntity.bl" />
-      <Content Include="Content\testSerializedEntity.bl">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </Content>
     </ItemGroup>
 
     <ItemGroup>

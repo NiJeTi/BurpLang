@@ -15,7 +15,7 @@ namespace BurpLang.Tests
         [SetUp]
         public void SetUp()
         {
-            _serializedEntity = File.ReadAllText(Path.Combine("Content", "testSerializedEntity.bl"));
+            _serializedEntity = File.ReadAllText(Path.Combine("Entities", "SerializedEntity.bl"));
         }
 
         [Test]
