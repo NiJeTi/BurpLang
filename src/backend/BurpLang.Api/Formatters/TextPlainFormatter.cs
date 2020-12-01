@@ -24,7 +24,7 @@ namespace BurpLang.Api.Formatters
 
         public override Task<InputFormatterResult> ReadRequestBodyAsync(
             InputFormatterContext context, Encoding encoding) =>
-            throw new NotImplementedException();
+            ReadAsync(context);
 
         protected override bool CanReadType(Type type) => type == typeof(string);
     }

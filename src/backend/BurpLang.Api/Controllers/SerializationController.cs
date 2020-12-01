@@ -1,6 +1,7 @@
 ﻿using System;
 
 using BurpLang.Common.Entities;
+using BurpLang.Exceptions;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,17 +12,21 @@ namespace BurpLang.Api.Controllers
     public class SerializationController : ControllerBase
     {
         [HttpPost("deserialize")]
-        public IActionResult Deserialize([FromBody] string body)
+        public object Deserialize([FromBody] string body)
         {
             try
             {
                 var deserialized = Converter.Deserialize<Entity>(body);
 
-                return Ok(deserialized);
+                return deserialized;
             }
             catch (FormatException formatException)
             {
-                return Ok(formatException.Message);
+                return new { formatException.Message };
+            }
+            catch (RootObjectNotFoundException rootObjectNotFoundException)
+            {
+                return new { rootObjectNotFoundException.Message };
             }
         }
     }
