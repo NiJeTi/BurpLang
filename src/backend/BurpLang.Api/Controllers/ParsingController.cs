@@ -10,8 +10,8 @@ namespace BurpLang.Api.Controllers
     [Route("")]
     public class ParsingController : ControllerBase
     {
-        [HttpPost("deserialize")]
-        public IActionResult Deserialize([FromBody] string data)
+        [HttpPost("parse")]
+        public IActionResult Parse([FromBody] string data)
         {
             var response = new ParseResponse();
             var deserializer = new Parser<Entity>(data);
