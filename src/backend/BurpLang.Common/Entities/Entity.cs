@@ -43,6 +43,15 @@ namespace BurpLang.Common.Entities
                 EnumerableStrings, EnumerableNumbers,
                 TrueBoolean, FalseBoolean);
 
+        public override string ToString() =>
+            $"{nameof(String)}: {String}, " +
+            $"{nameof(Integer)}: {Integer}, " +
+            $"{nameof(FloatingPointNumber)}: {FloatingPointNumber}, " +
+            $"{nameof(EnumerableStrings)}: {EnumerableStrings}, " +
+            $"{nameof(EnumerableNumbers)}: {EnumerableNumbers}, " +
+            $"{nameof(TrueBoolean)}: {TrueBoolean}, " +
+            $"{nameof(FalseBoolean)}: {FalseBoolean}";
+
         public bool Equals(Entity? other)
         {
             if (other is null)
@@ -54,14 +63,5 @@ namespace BurpLang.Common.Entities
                 && TrueBoolean == other.TrueBoolean
                 && FalseBoolean == other.FalseBoolean;
         }
-
-        public override string ToString() =>
-            $"{nameof(String)}: {String}, " +
-            $"{nameof(Integer)}: {Integer}, " +
-            $"{nameof(FloatingPointNumber)}: {FloatingPointNumber}, " +
-            $"{nameof(EnumerableStrings)}: {EnumerableStrings}, " +
-            $"{nameof(EnumerableNumbers)}: {EnumerableNumbers}, " +
-            $"{nameof(TrueBoolean)}: {TrueBoolean}, " +
-            $"{nameof(FalseBoolean)}: {FalseBoolean}";
     }
 }
