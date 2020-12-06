@@ -10,8 +10,4 @@
       <ProjectReference Include="..\BurpLang\BurpLang.csproj" />
     </ItemGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.0" />
-    </ItemGroup>
-
 </Project>

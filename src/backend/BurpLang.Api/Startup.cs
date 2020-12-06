@@ -14,9 +14,7 @@ namespace BurpLang.Api
         {
             services.AddLogging(builder => builder.ClearProviders());
 
-            services
-               .AddControllers(options => options.InputFormatters.Add(new TextPlainFormatter()))
-               .AddNewtonsoftJson();
+            services.AddControllers(options => options.InputFormatters.Add(new TextPlainFormatter()));
         }
 
         public void Configure(IApplicationBuilder application, IWebHostEnvironment environment)

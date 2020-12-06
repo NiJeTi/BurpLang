@@ -23,9 +23,9 @@ namespace BurpLang.Tests
         [Test]
         public void ParseFromFile_ValidSyntax()
         {
-            var deserialized = _parser.GetObject();
+            var parsedEntity = _parser.GetObject();
 
-            Assert.That(deserialized, Is.EqualTo(_entity));
+            Assert.That(parsedEntity, Is.EqualTo(_entity));
         }
     }
 }
