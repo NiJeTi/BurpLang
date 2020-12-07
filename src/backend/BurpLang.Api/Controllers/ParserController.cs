@@ -4,11 +4,13 @@ using BurpLang.Exceptions;
 
 using Microsoft.AspNetCore.Mvc;
 
+using Serilog;
+
 namespace BurpLang.Api.Controllers
 {
     [ApiController]
     [Route("")]
-    public class ParsingController : ControllerBase
+    public class ParserController : ControllerBase
     {
         [HttpPost("parse")]
         public IActionResult Parse([FromBody] string data)
@@ -20,10 +22,12 @@ namespace BurpLang.Api.Controllers
                 var deserializer = new Parser<Entity>(data);
 
                 response.Entity = deserializer.GetObject();
+                Log.Information("Entity parse: SUCCESS.");
             }
             catch (ParsingException exception)
             {
                 response.Error = exception;
+                Log.Information("Entity parse: ERROR.");
             }
 
             return Ok(response);

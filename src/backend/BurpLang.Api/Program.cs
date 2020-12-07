@@ -28,12 +28,7 @@ namespace BurpLang.Api
         private static IHost CreateHost(string[] args) =>
             Host
                .CreateDefaultBuilder(args)
-               .UseSerilog((context, _) =>
-                {
-                    Log.Logger = new LoggerConfiguration()
-                       .ReadFrom.Configuration(context.Configuration)
-                       .CreateLogger();
-                }, true)
+               .UseSerilog()
                .ConfigureWebHostDefaults(builder => builder.UseStartup<Startup>())
                .Build();
     }
