@@ -14,10 +14,11 @@ namespace BurpLang.Api.Controllers
         public IActionResult Parse([FromBody] string data)
         {
             var response = new ParseResponse();
-            var deserializer = new Parser<Entity>(data);
 
             try
             {
+                var deserializer = new Parser<Entity>(data);
+
                 response.Entity = deserializer.GetObject();
             }
             catch (ParsingException exception)
