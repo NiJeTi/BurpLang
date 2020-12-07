@@ -1,7 +1,6 @@
 ﻿using System;
 
 using BurpLang.Common.Entities;
-using BurpLang.Exceptions;
 
 namespace BurpLang.Api.Models
 {
@@ -10,6 +9,6 @@ namespace BurpLang.Api.Models
     {
         public Entity? Entity { get; set; }
 
-        public ParsingException? Error { get; set; }
+        public ParsingError? Error { get; set; }
     }
 }
