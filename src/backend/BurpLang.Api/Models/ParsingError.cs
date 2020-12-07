@@ -17,14 +17,12 @@ namespace BurpLang.Api.Models
         public int StartIndex { get; set; }
         public int EndIndex { get; set; }
 
-        public static implicit operator ParsingError(ParsingException exception)
-        {
-            return new ParsingError(exception.Message)
+        public static implicit operator ParsingError(ParsingException exception) =>
+            new ParsingError(exception.Message)
             {
                 Message = exception.Message,
                 StartIndex = exception.StartIndex,
                 EndIndex = exception.EndIndex
             };
-        }
     }
 }

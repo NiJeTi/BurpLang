@@ -59,15 +59,13 @@ namespace BurpLang.Common.Entities
             return SomeText == other.SomeText
                 && ThisIsNumber == other.ThisIsNumber
                 && ThisIsFloatingPointNumber.Equals(ThisIsFloatingPointNumber)
-                && SomeLogicalStatement == other.SomeLogicalStatement
-                && (TextLines is not null && other.TextLines is not null &&
-                    TextLines.SequenceEqual(other.TextLines))
-                && (MultipleNumbers is not null && other.MultipleNumbers is not null &&
-                    MultipleNumbers.SequenceEqual(other.MultipleNumbers))
-                && (MultipleRealNumbers is not null && other.MultipleRealNumbers is not null &&
-                    MultipleRealNumbers.SequenceEqual(other.MultipleRealNumbers))
-                && (BunchOfStatements is not null && other.BunchOfStatements is not null &&
-                    BunchOfStatements.SequenceEqual(other.BunchOfStatements));
+                && SomeLogicalStatement == other.SomeLogicalStatement && TextLines is not null &&
+                other.TextLines is not null && TextLines.SequenceEqual(other.TextLines) &&
+                MultipleNumbers is not null && other.MultipleNumbers is not null &&
+                MultipleNumbers.SequenceEqual(other.MultipleNumbers) && MultipleRealNumbers is not null &&
+                other.MultipleRealNumbers is not null && MultipleRealNumbers.SequenceEqual(other.MultipleRealNumbers) &&
+                BunchOfStatements is not null && other.BunchOfStatements is not null &&
+                BunchOfStatements.SequenceEqual(other.BunchOfStatements);
         }
     }
 }
