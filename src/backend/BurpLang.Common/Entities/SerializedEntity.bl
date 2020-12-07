@@ -1,13 +1,14 @@
 ﻿<
-    String = "String";
-    Integer = 123;
-    FloatingPointNumber = 123.456;
-    EnumerableStrings = [
+    SomeText = "String";
+    ThisIsNumber = 123;
+    ThisIsFloatingPointNumber = 123.456;
+    SomeLogicalStatement = TRUE;
+    TextLines = [
         "String1",
         "String2",
         "String3",
     ];
-    EnumerableNumbers = [
+    MultipleNumbers = [
         1,
         2,
         3,
@@ -15,6 +16,17 @@
         5,
         6,
     ];
-    TrueBoolean = TRUE;
-    FalseBoolean = FALSE;
+    MultipleRealNumbers = [
+        1.2,
+        3.4,
+        5.6,
+        7.8,
+        9.0,
+    ];
+    BunchOfStatements = [
+        TRUE,
+        FALSE,
+        FALSE,
+        TRUE,
+    ];
 >

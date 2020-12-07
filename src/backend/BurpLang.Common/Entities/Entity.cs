@@ -8,19 +8,17 @@ namespace BurpLang.Common.Entities
 {
     public class Entity : IEquatable<Entity>
     {
-        public string String { get; set; } = "String";
+        public string? SomeText { get; set; }
+        public int ThisIsNumber { get; set; }
+        public float ThisIsFloatingPointNumber { get; set; }
+        public bool SomeLogicalStatement { get; set; }
 
-        public int Integer { get; set; } = 123;
+        public IEnumerable<string>? TextLines { get; set; }
+        public IEnumerable<int>? MultipleNumbers { get; set; }
 
-        public float FloatingPointNumber { get; set; } = 123.456f;
+        public IEnumerable<float>? MultipleRealNumbers { get; set; }
 
-        public IEnumerable<string> EnumerableStrings { get; set; } = new[] { "String1", "String2", "String3" };
-
-        public IEnumerable<int> EnumerableNumbers { get; set; } = new[] { 1, 2, 3, 4, 5, 6 };
-
-        public bool TrueBoolean { get; set; } = true;
-
-        public bool FalseBoolean { get; set; } = false;
+        public IEnumerable<bool>? BunchOfStatements { get; set; }
 
         public static bool operator ==(Entity? left, Entity? right) => Equals(left, right);
 
@@ -39,29 +37,37 @@ namespace BurpLang.Common.Entities
         }
 
         public override int GetHashCode() =>
-            HashCode.Combine(String, Integer, FloatingPointNumber,
-                EnumerableStrings, EnumerableNumbers,
-                TrueBoolean, FalseBoolean);
+            HashCode.Combine(
+                SomeText, ThisIsNumber, ThisIsFloatingPointNumber, SomeLogicalStatement,
+                TextLines, MultipleNumbers, MultipleRealNumbers, BunchOfStatements);
 
         public override string ToString() =>
-            $"{nameof(String)}: {String}, " +
-            $"{nameof(Integer)}: {Integer}, " +
-            $"{nameof(FloatingPointNumber)}: {FloatingPointNumber}, " +
-            $"{nameof(EnumerableStrings)}: {EnumerableStrings}, " +
-            $"{nameof(EnumerableNumbers)}: {EnumerableNumbers}, " +
-            $"{nameof(TrueBoolean)}: {TrueBoolean}, " +
-            $"{nameof(FalseBoolean)}: {FalseBoolean}";
+            $"{nameof(SomeText)}: {SomeText}, " +
+            $"{nameof(ThisIsNumber)}: {ThisIsNumber}, " +
+            $"{nameof(ThisIsFloatingPointNumber)}: {ThisIsFloatingPointNumber}, " +
+            $"{nameof(SomeLogicalStatement)}: {SomeLogicalStatement}, " +
+            $"{nameof(TextLines)}: {TextLines}, " +
+            $"{nameof(MultipleNumbers)}: {MultipleNumbers}, " +
+            $"{nameof(MultipleRealNumbers)}: {MultipleRealNumbers}, " +
+            $"{nameof(BunchOfStatements)}: {BunchOfStatements}";
 
         public bool Equals(Entity? other)
         {
             if (other is null)
                 return false;
 
-            return String == other.String
-                && EnumerableNumbers.SequenceEqual(other.EnumerableNumbers)
-                && EnumerableStrings.SequenceEqual(other.EnumerableStrings)
-                && TrueBoolean == other.TrueBoolean
-                && FalseBoolean == other.FalseBoolean;
+            return SomeText == other.SomeText
+                && ThisIsNumber == other.ThisIsNumber
+                && ThisIsFloatingPointNumber.Equals(ThisIsFloatingPointNumber)
+                && SomeLogicalStatement == other.SomeLogicalStatement
+                && (TextLines is not null && other.TextLines is not null &&
+                    TextLines.SequenceEqual(other.TextLines))
+                && (MultipleNumbers is not null && other.MultipleNumbers is not null &&
+                    MultipleNumbers.SequenceEqual(other.MultipleNumbers))
+                && (MultipleRealNumbers is not null && other.MultipleRealNumbers is not null &&
+                    MultipleRealNumbers.SequenceEqual(other.MultipleRealNumbers))
+                && (BunchOfStatements is not null && other.BunchOfStatements is not null &&
+                    BunchOfStatements.SequenceEqual(other.BunchOfStatements));
         }
     }
 }
