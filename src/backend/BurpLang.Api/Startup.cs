@@ -4,7 +4,8 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+
+using Serilog;
 
 namespace BurpLang.Api
 {
@@ -12,9 +13,9 @@ namespace BurpLang.Api
     {
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddLogging(builder => builder.ClearProviders());
-
-            services.AddControllers(options => options.InputFormatters.Add(new TextPlainFormatter()));
+            services
+               .AddControllers(options => options.InputFormatters.Add(new TextPlainFormatter()))
+               .AddNewtonsoftJson();
         }
 
         public void Configure(IApplicationBuilder application, IWebHostEnvironment environment)
@@ -30,6 +31,7 @@ namespace BurpLang.Api
                 });
 
             application.UseEndpoints(endpoints => endpoints.MapControllers());
+            application.UseSerilogRequestLogging();
         }
     }
 }
