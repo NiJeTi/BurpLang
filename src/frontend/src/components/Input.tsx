@@ -68,7 +68,7 @@ function getErrorDecoration(text: string, start: number, end: number) {
 
   i = 0;
   while (i < end) {
-    if (text[i] === '\r' || text[i] === '\n' || text[i] === '\r\n') {
+    if (text[i] === '\n') {
       endLineNumber++;
       endColumn = 1;
     } else {
